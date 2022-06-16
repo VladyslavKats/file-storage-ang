@@ -1,0 +1,26 @@
+<main>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li>
+                    <a mat-raised-button color="primary" routerLink="/storage">
+                       Overview
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button  color="primary" routerLink="upload">
+                       Upload files
+                    </a>
+                </li>
+                <li>
+                    <a mat-raised-button color="primary" routerLink="manage">
+                       Manage files
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+           <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>

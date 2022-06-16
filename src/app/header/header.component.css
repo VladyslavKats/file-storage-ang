@@ -1,0 +1,53 @@
+
+header{
+  background-color: #3f51b5;
+}
+
+.logo{
+  display: inline-block;
+  overflow: hidden;
+  
+
+}
+
+img{
+  width: 150px;
+  height: 65px;
+}
+
+.container{
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+  
+}
+
+nav{
+  display: inline-block;
+}
+
+ul{
+  display: inline-block;
+}
+
+ul li {
+  display: inline-block;
+  margin-left: 100px;
+}
+
+ul li:first-child{
+  margin-left: 0px;
+}
+
+ul a{
+  display: inline-block;
+  color: white;
+
+}
+
+
+.logout:hover{
+  cursor: pointer;
+}

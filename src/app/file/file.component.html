@@ -1,0 +1,18 @@
+
+<mat-card>
+    <div class="wrapper">
+    
+        <div class="description">
+            <div class="icon">
+                <mat-icon  mat-list-icon>note</mat-icon>
+            </div>
+            <p class="name"> {{file?.name ?? 'example.txt'}} <br> <span class="size">{{file?.size ?? 123}}</span></p>
+            
+        </div>
+        <div class="actions">
+            <button mat-raised-button color="primary" (click)="rename()">Rename</button>
+            <button mat-raised-button color="warn" (click)="remove()">Delete</button>
+            <button mat-raised-button  (click)="download()">Download</button>
+        </div>
+    </div>
+</mat-card>

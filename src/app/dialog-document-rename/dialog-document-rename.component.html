@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Rename file</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Enter new name</mat-label>
+        <input matInput  formControlName="name" >
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="!form.touched && form.valid" mat-dialog-close (click)="save()" >Save</button>
+</mat-dialog-actions>

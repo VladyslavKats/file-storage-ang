@@ -1,0 +1,49 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.description{
+   display: flex;
+
+}
+p{
+    display: block;
+    margin-left: 40px;
+    position: relative;
+    top: 10px;
+}
+
+p.name{
+    font-size: 20px;
+}
+
+.size{
+    font-size: 16px;
+}
+
+.actions{
+    margin-left: 200px;
+   
+}
+
+.mat-icon {
+    font-size: 50px;
+    position: relative;
+    top: 5px;
+  }
+
+
+  .actions button{
+    margin-left: 20px;
+  }
+
+  .actions button:first-child{
+    margin-left: 0px;
+  }
+
+  .mat-card{
+    width: 800px;
+  }

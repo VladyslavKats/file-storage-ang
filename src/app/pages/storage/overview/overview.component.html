@@ -1,0 +1,35 @@
+<main>
+  <div class="wrapper">
+      <mat-card class="card">
+        <mat-card-content>
+          <circle-progress
+            [percent]="90"
+            [radius]="100"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#2527a8'"
+            [innerStrokeColor]="'#2527a8'"
+            [animation]="true"
+            [animationDuration]="2000"
+            [showSubtitle]="false"
+            [titleFontSize]="'40'"
+          ></circle-progress>
+        </mat-card-content>
+        <mat-card-header>
+          <h2>Filled space</h2>
+        </mat-card-header>
+      </mat-card>
+      <mat-card class="card">
+        <mat-card-content>
+          <div class="number">
+            <app-number-tracker [countInterval]="300" [fontSize]="80" [end]="10" [color]="'#2527a8'"></app-number-tracker>
+          </div>
+          
+        </mat-card-content>
+        <mat-card-header>
+          <h2>Files</h2>
+        </mat-card-header>
+      </mat-card>
+      
+  </div>
+</main>

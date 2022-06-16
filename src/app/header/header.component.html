@@ -1,0 +1,25 @@
+
+
+<header>
+  <div class="container">
+   <a class="logo" routerLink="/">
+     <img src="./assets/image/logo.png" alt="">
+   </a>
+    <nav>
+      <ul>
+        <li *ngIf="(authService.isLoggedIn$ | async)"><a routerLink="storage">
+          Storage
+       </a></li>
+       <li *ngIf="!(authService.isLoggedIn$ | async)"><a routerLink="login">
+          Login
+       </a></li>
+       <li *ngIf="(authService.isLoggedIn$ | async)"><a class="logout" (click)="logout()">
+          Logout
+       </a></li>
+      </ul>
+
+
+    </nav>
+
+  </div>
+</header>

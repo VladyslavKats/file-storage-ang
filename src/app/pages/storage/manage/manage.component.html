@@ -1,0 +1,9 @@
+<main>
+    <div *ngIf="files.length !== 0" class="wrapper">
+        <h1>Files</h1>
+        <app-file *ngFor="let file of files" [file]="file"></app-file>
+    </div>
+    <div *ngIf="!files || files.length === 0" class="empty">
+        <p>There are not any files , but you can <a routerLink="/storage/upload">upload</a>  them</p>
+    </div>
+</main>

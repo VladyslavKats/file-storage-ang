@@ -1,0 +1,32 @@
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0px auto;
+}
+
+main{
+    padding-top: 150px;
+}
+
+h1{
+    font-size: 30px;
+}
+
+
+
+a{
+    font-size: 16px;
+    color:blue;
+}
+
+
+
+button{
+    padding: 5px 0px;
+    font-size: 20px;
+}
+
+mat-error{
+    margin-bottom: 10px;
+}

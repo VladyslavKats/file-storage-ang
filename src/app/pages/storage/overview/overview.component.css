@@ -1,0 +1,22 @@
+.wrapper{
+    padding-top:40px;
+   
+}
+
+
+.card{
+    display: inline-block;
+    margin-left: 80px;
+}
+
+.card:first-child{
+    margin-left: 200px;
+}
+
+.number{
+    width: 226px;
+    height: 226px;
+    text-align: center;
+    padding-top: 90px;
+    
+}

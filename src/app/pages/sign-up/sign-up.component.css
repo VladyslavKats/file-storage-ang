@@ -1,0 +1,19 @@
+
+main{
+   
+    padding-top: 70px;
+    height: 100%;
+}
+
+form{
+   
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    padding: 20px;
+    margin: 0px auto ;
+}
+
+mat-form-field{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,36 @@
+<main>
+    <div class="wrapper">
+        <h1>Select file</h1>
+        <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Drop your files or click here!</ngx-dropzone-label>
+            <ngx-dropzone-preview class="preview-item" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <button [disabled]="files.length === 0" mat-raised-button color="primary" (click)="onSubmit()">Upload</button>
+        <div *ngIf="filesUploaded.length !== 0" class="files-uploaded">
+            <mat-accordion>
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Your files have just uploaded
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-list>
+                        <mat-list-item *ngFor="let file of filesUploaded">
+                            <mat-icon mat-list-icon>note</mat-icon>
+                            <div mat-line>{{file.name}}</div>
+                            <div mat-line> {{file.size}} kb </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+
+            
+            
+        </div>
+    </div>
+    
+</main>
