@@ -2,12 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    height: auto;
 }
 
 .description{
    display: flex;
-
+    flex: 0 1 55%;
 }
 p{
     display: block;
@@ -25,7 +25,7 @@ p.name{
 }
 
 .actions{
-    margin-left: 200px;
+    flex:0 1 40%;
    
 }
 
