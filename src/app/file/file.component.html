@@ -6,13 +6,22 @@
             <div class="icon">
                 <mat-icon  mat-list-icon>note</mat-icon>
             </div>
-            <p class="name"> {{file?.name ?? 'example.txt'}} <br> <span class="size">{{file?.size ?? 123}}</span></p>
+            <p class="name"> {{file?.name ?? 'example.txt'}} <br> <span class="size">{{file!.size | byte}}</span></p>
             
         </div>
+        <div *ngIf="authService.getUser()?.isAdmin" class="owner">
+            Owner : {{file?.user?.name}}
+        </div>
         <div class="actions">
-            <button mat-raised-button color="primary" (click)="rename()">Rename</button>
-            <button mat-raised-button color="warn" (click)="remove()">Delete</button>
-            <button mat-raised-button  (click)="download()">Download</button>
+            <button mat-raised-button color="primary" (click)="rename()">
+                <mat-icon class="icon-rename">edit</mat-icon>
+            </button>
+            <button mat-raised-button color="warn" (click)="remove()">
+                <mat-icon class="icon-rename">delete</mat-icon>
+            </button>
+            <button mat-raised-button color="basic" (click)="download()">
+                <mat-icon class="icon-rename">download</mat-icon>
+            </button>
         </div>
     </div>
 </mat-card>

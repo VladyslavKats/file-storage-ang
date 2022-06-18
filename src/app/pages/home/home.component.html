@@ -1,7 +1,12 @@
 <div class="main">
   <div class="container">
-    <p>home works!</p>
-
-
+    <div class="text">
+      <h1>Manage <span> all your files </span><br>in <span>one place</span></h1>
+      <p>A comfortable way to have access to all your files</p>
+      <a mat-raised-button color="primary" [routerLink]="(authService.isLoggedIn$|async) ?  'storage' : 'login'">Get Started</a>
+    </div>
+    <div class="image">
+      <img src="../assets/image/storage.png">
+    </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MaterialExampleModule } from './material.module';
@@ -30,6 +30,8 @@ import { ManageComponent } from './pages/storage/manage/manage.component';
 import { FileComponent } from './file/file.component';
 import { DialogDocumentRenameComponent } from './dialog-document-rename/dialog-document-rename.component';
 import { DialogDocumentRemoveComponent } from './dialog-document-remove/dialog-document-remove.component';
+import { IterceptorService } from './services/iterceptor.service';
+import {  BytePipe } from './pipes/byte.pipe';
 
 
 
@@ -51,7 +53,8 @@ import { DialogDocumentRemoveComponent } from './dialog-document-remove/dialog-d
     ManageComponent,
     FileComponent,
     DialogDocumentRenameComponent,
-    DialogDocumentRemoveComponent
+    DialogDocumentRemoveComponent,
+    BytePipe
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ import { DialogDocumentRemoveComponent } from './dialog-document-remove/dialog-d
       animationDuration: 300
     })
   ],
-  providers: [AuthService , DocumentService],
+  providers: [AuthService , DocumentService , {provide : HTTP_INTERCEPTORS , useClass: IterceptorService , multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

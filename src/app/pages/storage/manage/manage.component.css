@@ -17,6 +17,7 @@ h1::after{
 .wrapper{
     margin-top: 40px;
     margin-left: 100px;
+    margin-bottom: 80px;
 }
 
 .empty{

@@ -21,10 +21,10 @@ export class AuthService {
 
   logIn$(model : LogInModel) : Observable<AuthenticateResponse>{
     let url : string = `${environment.baseUrl}api/account/login`;
-    return this.http.post(url , model)
+    return this.http.post<AuthenticateResponse>(url , model)
       .pipe(
         tap((response : any) => {
-          this.setUser({userName : response.userName , token : response.token});
+          this.setUser(response);
           this._isLoggedIn.next(true);
         })
       );
@@ -34,10 +34,10 @@ export class AuthService {
 
   signUp$(model:SignUpModel) : Observable<AuthenticateResponse>{
     let url:string = `${environment.baseUrl}api/account/signup`;
-    return this.http.post(url , model )
+    return this.http.post<AuthenticateResponse>(url , model )
       .pipe(
         tap((response : any) => {
-          this.setUser({userName : response.userName , token : response.token})
+          this.setUser(response)
           this._isLoggedIn.next(true);
         })
       )

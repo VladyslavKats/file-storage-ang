@@ -35,7 +35,7 @@ export class DocumentService {
   }
 
   deleteFile(file : DocumentModel){
-    let url:string = `${environment.baseUrl}api/documents/${file.id}`;
+    let url:string = `${environment.baseUrl}api/documents?Id=${file.id}&UserName=${file.user.name}`;
     return this.http.delete(url);
   }
 
@@ -46,9 +46,14 @@ export class DocumentService {
     return this.http.post(url , body , {responseType : 'blob'});
   }
 
-  getFiles() : Observable<DocumentModel[]>{
+  getUserFiles() : Observable<DocumentModel[]>{
     let userName = this.authService.getUser()?.userName;
     let url:string = `${environment.baseUrl}api/documents/${userName}`;
+    return this.http.get<DocumentModel[]>(url);
+  }
+
+  getAllFiles() : Observable<DocumentModel[]>{
+    let url : string = `${environment.baseUrl}api/documents`;
     return this.http.get<DocumentModel[]>(url);
   }
 }

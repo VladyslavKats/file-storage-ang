@@ -20,8 +20,8 @@ export class SignUpComponent implements OnInit {
     this.form = new FormGroup({
       userName : new FormControl('' , [Validators.required] , [this.checkUserName.bind(this) as AsyncValidatorFn]),
       email : new FormControl('' , [Validators.email , Validators.required]),
-      password : new FormControl('' , [Validators.required , Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{4,}$/)]),
-      passwordConfirm : new FormControl('' , [Validators.required , Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{4,}$/),
+      password : new FormControl('' , [Validators.required , Validators.pattern(/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{4,20}$/)]),
+      passwordConfirm : new FormControl('' , [Validators.required , Validators.pattern(/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{4,20}$/),
       this.checkPasswords])
     })
   }

@@ -9,7 +9,7 @@ import {AuthenticateResponse} from "../../interfaces/authenticate-response";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(public authService : AuthService) { }
 
   ngOnInit(): void {
   }

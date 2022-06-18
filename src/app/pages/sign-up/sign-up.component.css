@@ -10,8 +10,9 @@ form{
     display: flex;
     flex-direction: column;
     max-width: 350px;
-    padding: 20px;
+    padding: 40px;
     margin: 0px auto ;
+    background-color: white;
 }
 
 mat-form-field{

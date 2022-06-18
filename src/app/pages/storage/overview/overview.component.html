@@ -3,7 +3,7 @@
       <mat-card class="card">
         <mat-card-content>
           <circle-progress
-            [percent]="90"
+            [percent]="percent"
             [radius]="100"
             [outerStrokeWidth]="16"
             [innerStrokeWidth]="8"
@@ -22,7 +22,7 @@
       <mat-card class="card">
         <mat-card-content>
           <div class="number">
-            <app-number-tracker [countInterval]="300" [fontSize]="80" [end]="10" [color]="'#2527a8'"></app-number-tracker>
+            <app-number-tracker [countInterval]="300" [fontSize]="80" [end]="files" [color]="'#2527a8'"></app-number-tracker>
           </div>
           
         </mat-card-content>

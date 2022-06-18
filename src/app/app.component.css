@@ -6,5 +6,16 @@
 
 main{
   flex:1 0 auto;
- 
+  background-image: url('src/assets/image/background.png');
+}
+
+
+
+.loader{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  z-index: 10;
 }

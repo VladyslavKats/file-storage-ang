@@ -5,9 +5,15 @@
     height: auto;
 }
 
+.owner{
+
+  font-size: 16px;
+  flex: 0 1 23%;
+}
+
 .description{
    display: flex;
-    flex: 0 1 55%;
+    flex: 0 1 50%;
 }
 p{
     display: block;
@@ -25,7 +31,7 @@ p.name{
 }
 
 .actions{
-    flex:0 1 40%;
+    flex:0 1 27%;
    
 }
 
@@ -35,9 +41,12 @@ p.name{
     top: 5px;
   }
 
-
+  .icon-rename{
+    font-size: 14px;
+  }
   .actions button{
-    margin-left: 20px;
+    margin-left: 5px;
+    width: 40px;
   }
 
   .actions button:first-child{
