@@ -13,13 +13,15 @@ import { DocumentService } from '../services/document.service';
 export class DialogDocumentRenameComponent implements OnInit {
 
   form : any;
-  
+  extension!: string;
   constructor(@Inject(MAT_DIALOG_DATA) public data : any , private documentService:DocumentService) { }
 
 
   ngOnInit(): void {
+    this.extension = this.data.file.name.split('.').pop();
+    let name = this.data.file.name.split('.').slice(0, -1).join('.');
     this.form = new FormGroup({
-      name: new FormControl(this.data.file.name , Validators.required)
+      name: new FormControl(name , Validators.required)
     })
     
   }
@@ -28,7 +30,8 @@ export class DialogDocumentRenameComponent implements OnInit {
     if(this.form.invalid){
       return;
     }
-    const name = this.form.get('name').value;
+    const name = this.form.get('name').value + '.' +  this.extension;
+    
     this.data.file.name = name;
     this.documentService.renameFile(this.data.file)
       .subscribe((response : DocumentModel) => {
