@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DocumentService } from '../services/document.service';
 
@@ -10,7 +10,7 @@ import { DocumentService } from '../services/document.service';
 })
 export class DialogDocumentRemoveComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data : any , private documentService:DocumentService , private router : Router) { }
+  constructor(public dialogRef: MatDialogRef<DialogDocumentRemoveComponent> ,@Inject(MAT_DIALOG_DATA) public data : any , private documentService:DocumentService , private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +18,11 @@ export class DialogDocumentRemoveComponent implements OnInit {
   remove(){
     this.documentService.deleteFile(this.data.file)
       .subscribe(response => {
-        this.router.navigate(['/storage']);
+        this.dialogRef.close(true);
+      }, error => {
+        this.dialogRef.close(false);
       });
+    
+    
   }
 }

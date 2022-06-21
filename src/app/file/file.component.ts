@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDocumentRemoveComponent } from '../dialog-document-remove/dialog-document-remove.component';
 import { DialogDocumentRenameComponent } from '../dialog-document-rename/dialog-document-rename.component';
@@ -13,9 +13,9 @@ import { DocumentService } from '../services/document.service';
 })
 export class FileComponent implements OnInit {
 
-
+  @Output() deleted = new EventEmitter<number>();
   @Input() file : DocumentModel | undefined;  
-
+  isDeleted : boolean = false;
 
   constructor(private documentService:DocumentService , public dialog : MatDialog ,public authService : AuthService) { }
 
@@ -28,13 +28,19 @@ export class FileComponent implements OnInit {
         file : this.file
       }
     });
+   
   }
 
 
   remove(){
     const dialogRef = this.dialog.open(DialogDocumentRemoveComponent , {
       data : {
-        file : this.file
+        file : this.file ,isDeleted : this.isDeleted
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.deleted.emit(this.file?.id);
       }
     });
   }
@@ -43,13 +49,14 @@ export class FileComponent implements OnInit {
   download(){
     if(this.file === undefined)
       return;
+   
     this.documentService.downloadFile(this.file)
       .subscribe((blob ) => {
         const a = document.createElement('a')
         const objectUrl = URL.createObjectURL(blob)
         a.href = objectUrl
         a.download = this.file!.name;
-        console.log(objectUrl)
+        
         a.click();
         URL.revokeObjectURL(objectUrl);
       });

@@ -20,13 +20,13 @@ export class BytePipe implements PipeTransform {
 
 
 
-    if(value >  Information.Gigabyte.size){
-      size = value / Information.Gigabyte.size;
+    if(value +  1 >  Information.Gigabyte.size){
+      size = value  / Information.Gigabyte.size;
       symb = Information.Gigabyte.symbol;
-    }else if(value > Information.Megabyte.size){
+    }else if(value + 1 > Information.Megabyte.size){
       size = value / Information.Megabyte.size;
       symb = Information. Megabyte.symbol;
-    }else if(value > Information.Kilobyte.size ){
+    }else if(value + 1> Information.Kilobyte.size ){
       size = value / Information.Kilobyte.size;
       symb = Information. Kilobyte.symbol;
     }else{

@@ -16,37 +16,38 @@ img{
 }
 
 .container{
-  padding: 10px 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 24px;
-  
 }
 
-nav{
-  display: inline-block;
+nav a{
+  color:white
 }
 
 ul{
-  display: inline-block;
+  display: flex;
+  height: 80px;
+  padding: 0px;
+  margin: 0px;
 }
 
-ul li {
-  display: inline-block;
-  margin-left: 100px;
+li{
+  display: block;
+  width: 200px;
 }
 
-ul li:first-child{
-  margin-left: 0px;
+li a{
+  display: block;
+  height: 100%;
+  text-align: center;
+  padding-top: 30px;
 }
 
-ul a{
-  display: inline-block;
-  color: white;
-
+li:hover{
+  background-color: rgb(137, 139, 236);
 }
-
 
 .logout:hover{
   cursor: pointer;

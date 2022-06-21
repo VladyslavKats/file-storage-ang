@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {SignUpModel} from "../interfaces/sign-up-model";
 import {Environment} from "@angular/cli/lib/config/workspace-schema";
 import {environment} from "../../environments/environment.prod";
@@ -43,6 +43,12 @@ export class AuthService {
       )
   }
 
+
+  isAdmin() : boolean{
+    const user = this.getUser();
+    return user?.isAdmin ?? false;
+  }
+
   private setUser(user:User) : void{
     localStorage.setItem('user' , JSON.stringify(user));
   }
@@ -65,5 +71,12 @@ export class AuthService {
   checkUserName( value : string) : Observable<boolean>{
     let url : string = `${environment.baseUrl}api/account/${value}`
     return this.http.get<boolean>(url);
+  }
+
+
+  createHeaderWithToken() : HttpHeaders{
+      let token = this.getUser()?.token;
+      let headers = new HttpHeaders().set('Authorization' , `Bearer ${token}`);
+    return headers;
   }
 }

@@ -25,7 +25,7 @@
                 <button mat-icon-button matSuffix (click)="hidePasswordConfirm = !hidePasswordConfirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePasswordConfirm">
                   <mat-icon>{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="this.form.get('passwordConfirm').errors?.notSame">{{'Passwords must be same'}}</mat-error>
+                <mat-error *ngIf="this.form.get('passwordConfirm').errors?.notSame">Passwords must be same</mat-error>
             </mat-form-field>
             <button (click)="onSubmit()" mat-raised-button color="primary">Submit</button>
         </form>

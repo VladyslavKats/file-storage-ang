@@ -32,6 +32,7 @@ import { DialogDocumentRenameComponent } from './dialog-document-rename/dialog-d
 import { DialogDocumentRemoveComponent } from './dialog-document-remove/dialog-document-remove.component';
 import { IterceptorService } from './services/iterceptor.service';
 import {  BytePipe } from './pipes/byte.pipe';
+import { ManageUsersComponent } from './pages/manage-users/manage-users.component';
 
 
 
@@ -54,7 +55,8 @@ import {  BytePipe } from './pipes/byte.pipe';
     FileComponent,
     DialogDocumentRenameComponent,
     DialogDocumentRemoveComponent,
-    BytePipe
+    BytePipe,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,

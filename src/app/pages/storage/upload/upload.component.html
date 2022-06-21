@@ -20,7 +20,7 @@
                         <mat-list-item *ngFor="let file of filesUploaded">
                             <mat-icon mat-list-icon>note</mat-icon>
                             <div mat-line>{{file.name}}</div>
-                            <div mat-line> {{file.size}} kb </div>
+                            <div mat-line> {{file.size | byte}}  </div>
                         </mat-list-item>
                     </mat-list>
                 </mat-expansion-panel>

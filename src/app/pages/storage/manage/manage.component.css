@@ -14,10 +14,32 @@ h1::after{
     background-color: rgb(0, 0, 0);
 }
 
+
+
+.filters{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.filters input {
+    display: block;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.empty-search{
+    text-align: center;
+    font-size: 20px;
+    color:rgb(151, 151, 151);
+}
+
 .wrapper{
-    margin-top: 40px;
-    margin-left: 100px;
-    margin-bottom: 80px;
+  
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 40px 40px 10px;
 }
 
 .empty{
@@ -29,3 +51,34 @@ h1::after{
 .empty a , a:visited{
     color:rgb(127, 127, 127);
 }
+
+.mat-slide-toggle{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.reset button{
+    
+    font-size: 16px;
+    padding: 10px;
+}
+
+.mat-icon{
+    font-size: 20px;
+    position: relative;
+   
+    
+}
+
+label{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+.mat-expansion-panel{
+    margin-bottom: 20px;
+}
+
+

@@ -24,36 +24,44 @@ export class DocumentService {
     
     let userName  = this.authService.getUser()?.userName;
     let url : string = `${environment.baseUrl}api/documents/upload/${userName}`
-    return this.http.post<FileUploadedResponse[]>(url , formData );
+    let headers = this.authService.createHeaderWithToken();
+
+    return this.http.post<FileUploadedResponse[]>(url , formData , {headers : headers} );
   }
 
 
   renameFile(file : DocumentModel) : Observable<DocumentModel>{
     let url:string = `${environment.baseUrl}api/documents`;
     let body = {id : file.id , name : file.name , size : file.size , contentType : file.contentType , path : file.path , userId: file.userId}
-    return this.http.put<DocumentModel>(url ,body);
+    let headers = this.authService.createHeaderWithToken();
+
+    return this.http.put<DocumentModel>(url ,body , {headers : headers});
   }
 
   deleteFile(file : DocumentModel){
     let url:string = `${environment.baseUrl}api/documents?Id=${file.id}&UserName=${file.user.name}`;
-    return this.http.delete(url);
+    let headers = this.authService.createHeaderWithToken();
+    return this.http.delete(url , {headers : headers});
   }
 
   downloadFile(file : DocumentModel) : Observable<Blob>{
    
     let url:string = `${environment.baseUrl}api/documents/download`;
     let body = {path : file.path , fileName : file.name , contentType : file.contentType};
-    return this.http.post(url , body , {responseType : 'blob'});
+    let headers = this.authService.createHeaderWithToken();
+    return this.http.post(url , body , {responseType : 'blob' , headers : headers});
   }
 
   getUserFiles() : Observable<DocumentModel[]>{
     let userName = this.authService.getUser()?.userName;
     let url:string = `${environment.baseUrl}api/documents/${userName}`;
-    return this.http.get<DocumentModel[]>(url);
+    let headers = this.authService.createHeaderWithToken();
+    return this.http.get<DocumentModel[]>(url , {headers : headers});
   }
 
   getAllFiles() : Observable<DocumentModel[]>{
     let url : string = `${environment.baseUrl}api/documents`;
-    return this.http.get<DocumentModel[]>(url);
+    let headers = this.authService.createHeaderWithToken();
+    return this.http.get<DocumentModel[]>(url , {headers : headers});
   }
 }

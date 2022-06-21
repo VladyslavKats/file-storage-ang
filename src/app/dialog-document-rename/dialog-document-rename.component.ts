@@ -35,7 +35,8 @@ export class DialogDocumentRenameComponent implements OnInit {
     this.data.file.name = name;
     this.documentService.renameFile(this.data.file)
       .subscribe((response : DocumentModel) => {
-        this.data.file = response;
+        this.data.file.path = response.path;
+        this.data.file.name = response.name;
       });
 
   }

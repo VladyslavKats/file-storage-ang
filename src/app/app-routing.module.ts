@@ -10,6 +10,7 @@ import { StorageComponent } from './pages/storage/storage.component';
 import { OverviewComponent } from './pages/storage/overview/overview.component';
 import { UploadComponent } from './pages/storage/upload/upload.component';
 import { ManageComponent } from './pages/storage/manage/manage.component';
+import { ManageUsersComponent } from './pages/manage-users/manage-users.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
    children :[
     {path :"" , component : OverviewComponent},
     {path : "upload" , component : UploadComponent},
-    {path : "manage" , component : ManageComponent}
+    {path : "manage-files" , component : ManageComponent},
+    {path : "manage-users" , component : ManageUsersComponent}
    ]}
 ];
 

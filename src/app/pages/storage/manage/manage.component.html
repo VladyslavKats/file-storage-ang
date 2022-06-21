@@ -1,9 +1,54 @@
 <main>
     <div *ngIf="files.length !== 0" class="wrapper">
         <h1>Files</h1>
-        <app-file *ngFor="let file of files" [file]="file"></app-file>
+        
+
+        <mat-accordion>
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filters
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="filters">
+                        <div class="search">
+                            <label for="name">Search by file name : </label>
+                            <mat-form-field>
+                                <input id="name" matInput type="text" [(ngModel)]="nameFilter" (ngModelChange)="applyFilterName($event , paginator)">
+                                <span matSuffix><mat-icon>search</mat-icon></span>
+                            </mat-form-field>
+                            <label *ngIf="authService.isAdmin()" for="owner">Search by owner name : </label>
+                            <mat-form-field *ngIf="authService.isAdmin()">
+                                <input matInput id="owner" type="text" [(ngModel)]="ownerFilter" (ngModelChange)="applyFilterOwner($event , paginator)">
+                                <span matSuffix><mat-icon>search</mat-icon></span>
+                            </mat-form-field>
+                        </div>
+                        <div class="sort">
+                            <mat-slide-toggle [(ngModel)]="sortedBySize" (ngModelChange)="sortBySize()" color="primary">Sort by file size</mat-slide-toggle>
+                            <mat-slide-toggle *ngIf="authService.isAdmin()" [(ngModel)]="sortedByOwner" (ngModelChange)="sortByOwner()" color="primary">Sort by owner name</mat-slide-toggle>
+                        </div>
+                        <div class="reset">
+                            <button (click)="resetFilters()" mat-button>Reset filter<mat-icon >refresh</mat-icon></button> 
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+        </mat-accordion>
+        
+        <app-file *ngFor="let file of filesPage" [file]="file" (deleted)="removeFile($event)"></app-file>
+        <div *ngIf="filteredFiles.length === 0" class="empty-search">
+            There are not such files
+        </div>
+        <mat-paginator [length]="filteredFiles.length"
+                        [pageSize]="filesPerPage" 
+                        (page)="onPageChange($event)"
+                        #paginator
+                        >
+        </mat-paginator>
+       
     </div>
+
     <div *ngIf="!files || files.length === 0" class="empty">
         <p>There are not any files , but you can <a routerLink="/storage/upload">upload</a>  them</p>
     </div>
+   
 </main>

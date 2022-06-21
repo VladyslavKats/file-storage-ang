@@ -1,23 +1,30 @@
 <main>
     <div class="container">
         <div class="menu">
-            <ul>
-                <li>
-                    <a mat-raised-button color="primary" routerLink="/storage">
-                       Overview
-                    </a>
-                </li>
-                <li>
-                    <a mat-raised-button  color="primary" routerLink="upload">
-                       Upload files
-                    </a>
-                </li>
-                <li>
-                    <a mat-raised-button color="primary" routerLink="manage">
-                       Manage files
-                    </a>
-                </li>
-            </ul>
+            <nav>
+                <ul>
+                    <li>
+                        <a mat-raised-button color="primary" routerLink="/storage">
+                           Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button  color="primary" routerLink="upload">
+                           Upload files
+                        </a>
+                    </li>
+                    <li>
+                        <a mat-raised-button color="primary" routerLink="manage-files">
+                           Manage files
+                        </a>
+                    </li>
+                    <li *ngIf="authService.isAdmin()">
+                        <a mat-raised-button color="primary" routerLink="manage-users">
+                           Manage users
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div class="content">
            <router-outlet></router-outlet>
