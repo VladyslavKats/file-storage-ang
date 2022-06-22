@@ -5,6 +5,10 @@ main{
     height: 100%;
 }
 
+h1{
+    font-size: 30px;
+}
+
 form{
    
     display: flex;
@@ -17,4 +21,9 @@ form{
 
 mat-form-field{
     margin-bottom: 20px;
+}
+
+button{
+    height: 50px;
+    font-size: 20px;
 }

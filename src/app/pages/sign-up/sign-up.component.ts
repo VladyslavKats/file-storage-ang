@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,7 +34,8 @@ export class SignUpComponent implements OnInit {
     const form = this.form.value;
     this.authService.signUp$({userName : form.userName , email : form.email , password : form.password})
       .subscribe((response =>{
-        this.router.navigate(['/']);
+        Swal.fire({heightAuto:false , text : 'Please confirm your email' , icon : 'success'})
+        this.router.navigate(['/login']);
       }))
   }
 

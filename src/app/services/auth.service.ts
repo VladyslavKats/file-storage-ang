@@ -32,15 +32,9 @@ export class AuthService {
 
 
 
-  signUp$(model:SignUpModel) : Observable<AuthenticateResponse>{
+  signUp$(model:SignUpModel) {
     let url:string = `${environment.baseUrl}api/account/signup`;
-    return this.http.post<AuthenticateResponse>(url , model )
-      .pipe(
-        tap((response : any) => {
-          this.setUser(response)
-          this._isLoggedIn.next(true);
-        })
-      )
+    return this.http.post(url , model );
   }
 
 

@@ -6,8 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialExampleModule } from './material.module';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -74,7 +73,8 @@ import { ManageUsersComponent } from './pages/manage-users/manage-users.componen
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
       animationDuration: 300
-    })
+    }),
+    SweetAlert2Module.forRoot()
   ],
   providers: [AuthService , DocumentService , {provide : HTTP_INTERCEPTORS , useClass: IterceptorService , multi:true}],
   bootstrap: [AppComponent]

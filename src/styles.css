@@ -101,3 +101,6 @@ ul{
   list-style-type: none;
 }
 
+body.swal2-height-auto {
+  height: 100% !important;
+}

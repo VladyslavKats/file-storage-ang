@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { DialogDocumentRemoveComponent } from '../dialog-document-remove/dialog-document-remove.component';
 import { DialogDocumentRenameComponent } from '../dialog-document-rename/dialog-document-rename.component';
 import { DocumentModel } from '../interfaces/document-model';
@@ -23,6 +24,7 @@ export class FileComponent implements OnInit {
   }
 
   rename(){
+    
     const dialogRef = this.dialog.open(DialogDocumentRenameComponent , {
       data : {
         file : this.file
@@ -39,8 +41,17 @@ export class FileComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.deleted.emit(this.file?.id);
+      
+      if(result && this.file){
+        this.documentService.deleteFile(this.file)
+          .subscribe(response => {
+            
+            Swal.fire({heightAuto:false , text : 'File ' + this.file?.name + ' was  deleted successful ' , icon : 'success'})
+            this.deleted.emit(this.file?.id);
+          } , error => {
+            Swal.fire({title : 'Error' , heightAuto:false , text : 'Please try again or later' , icon : 'error'})
+          });
+       
       }
     });
   }

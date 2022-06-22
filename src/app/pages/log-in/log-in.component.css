@@ -4,7 +4,7 @@ form{
     max-width: 400px;
     margin: 0px auto;
     background-color: white;
-    padding:50px 40px;
+    padding:50px 40px 20px;
 }
 
 main{
@@ -31,4 +31,10 @@ button{
 
 mat-error{
     margin-bottom: 10px;
+}
+
+p{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
 }

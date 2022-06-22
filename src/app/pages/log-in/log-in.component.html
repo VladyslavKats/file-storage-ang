@@ -15,8 +15,9 @@
                 </button>
             </mat-form-field>
             <mat-error *ngIf="this.form.get('userName').errors?.incorrect">{{'Passwords or username is incorrect'}}</mat-error>
-            <p><a routerLink="/signup">Registration..</a></p>
+            
             <button (click)="onSubmit()" mat-raised-button color="primary">Login</button>
+            <p> Not registered?<a routerLink="/signup"> Register</a></p>
         </form>
     </div>
 </main>
