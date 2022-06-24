@@ -64,7 +64,8 @@ export class AuthService {
 
   checkUserName( value : string) : Observable<boolean>{
     let url : string = `${environment.baseUrl}api/account/${value}`
-    return this.http.get<boolean>(url);
+    
+    return this.http.get<boolean>(url , );
   }
 
 
@@ -72,5 +73,12 @@ export class AuthService {
       let token = this.getUser()?.token;
       let headers = new HttpHeaders().set('Authorization' , `Bearer ${token}`);
     return headers;
+  }
+
+
+  deleteUser(userName : string ){
+    let url : string = `${environment.baseUrl}api/account/${userName}`
+    var headers = this.createHeaderWithToken();
+    return this.http.delete(url , {headers : headers});
   }
 }

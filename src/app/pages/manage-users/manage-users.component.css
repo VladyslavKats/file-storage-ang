@@ -26,3 +26,8 @@ h1::after{
     height: 1px;
     background-color: rgb(0, 0, 0);
 }
+
+
+.mat-icon:hover{
+    cursor:pointer;
+}

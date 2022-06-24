@@ -3,9 +3,10 @@
         <h1>Select file</h1>
         <ngx-dropzone (change)="onSelect($event)">
             <ngx-dropzone-label>Drop your files or click here!</ngx-dropzone-label>
-            <ngx-dropzone-preview class="preview-item" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-preview class="preview-item" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                 <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
             </ngx-dropzone-preview>
+           
         </ngx-dropzone>
         <button [disabled]="files.length === 0" mat-raised-button color="primary" (click)="onSubmit()">Upload</button>
         <div *ngIf="filesUploaded.length !== 0" class="files-uploaded">

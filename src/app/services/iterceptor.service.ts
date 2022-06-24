@@ -9,16 +9,15 @@ import { LoaderService } from './loader.service';
 export class IterceptorService implements HttpInterceptor {
 
   constructor(private loaderService : LoaderService) { }
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    setTimeout( () => {
-      this.loaderService.isLoading$.next(true);
-    });
-    
 
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    setTimeout(() => {this.loaderService.show()} , 0)
     return next.handle(req)
       .pipe(
         finalize(() => {
-          this.loaderService.isLoading$.next(false);
+          this.loaderService.hide();
         })
       )
     }

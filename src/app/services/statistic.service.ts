@@ -34,6 +34,7 @@ export class StatisticService {
   getAllStatistic() : Observable<UserStatisticModel[]>{
     let url :string = `${environment.baseUrl}api/statistic`
     let headers = this.authService.createHeaderWithToken();
+  
     return this.http.get<UserStatisticModel[]>(url , {headers : headers});
   }
 

@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      userName : new FormControl('' , [Validators.required] , [this.checkUserName.bind(this) as AsyncValidatorFn]),
+      userName : new FormControl('' , {validators : [Validators.required] , asyncValidators : this.checkUserName.bind(this) as AsyncValidatorFn , updateOn : 'blur'}),
       email : new FormControl('' , [Validators.email , Validators.required]),
       password : new FormControl('' , [Validators.required , Validators.pattern(/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{4,20}$/)]),
       passwordConfirm : new FormControl('' , [Validators.required , Validators.pattern(/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{4,20}$/),
@@ -56,7 +56,7 @@ export class SignUpComponent implements OnInit {
   checkUserName(control: FormControl): Promise<any> {
 
     return new Promise((resolve, reject) => {
-
+      
       this.authService.checkUserName(control.value)
         .subscribe(response => {
           if (response) {

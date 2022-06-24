@@ -3,7 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {UserStatisticModel} from 'src/app/interfaces/user-statistic-model'
+import { AuthService } from 'src/app/services/auth.service';
 import { StatisticService } from 'src/app/services/statistic.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -16,7 +18,7 @@ import { StatisticService } from 'src/app/services/statistic.service';
 })
 export class ManageUsersComponent implements  OnInit {
 
-  displayedColumns: string[] = ['userName', 'files', 'usedSpace' ,'maxSpace'];
+  displayedColumns: string[] = ['userName', 'files', 'usedSpace' ,'maxSpace' ,  'action' ];
   dataSource!: MatTableDataSource<UserStatisticModel>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,16 +26,20 @@ export class ManageUsersComponent implements  OnInit {
 
 
 
-  constructor(private statistcService : StatisticService) {}
+  constructor(private statistcService : StatisticService , private authService : AuthService) {}
   
   ngOnInit(): void {
     
     this.statistcService.getAllStatistic()
       .subscribe(response =>{
+        
         this.dataSource = new MatTableDataSource<UserStatisticModel>(response);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      })
+      } , error => {
+        Swal.fire({text : 'Error . Please try later' , icon : 'error' , heightAuto : false});
+      });
+      
   }
 
  
@@ -46,6 +52,34 @@ export class ManageUsersComponent implements  OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+  removeUser(model : UserStatisticModel){
+   
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete!',
+      heightAuto: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.deleteUser(model.userName)
+        .subscribe(response => {
+          Swal.fire({text : 'User has been deleted!' , icon: 'success' , heightAuto : false})
+          this.dataSource.data = this.dataSource.data.filter(u => u.userName !== model.userName);
+        } , 
+        error => {
+          Swal.fire({text : 'Error . Please try later' , icon: 'error' , heightAuto : false})
+      });
+      }
+    })
+
+
   }
 }
 
