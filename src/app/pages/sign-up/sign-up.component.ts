@@ -36,7 +36,9 @@ export class SignUpComponent implements OnInit {
       .subscribe((response =>{
         Swal.fire({heightAuto:false , text : 'Please confirm your email' , icon : 'success'})
         this.router.navigate(['/login']);
-      }))
+      }) , error => {
+        Swal.fire({text:'Sorry , please try later.' , icon : 'error' , heightAuto : false});
+      })
   }
 
 
@@ -64,6 +66,8 @@ export class SignUpComponent implements OnInit {
           } else {
             resolve(null);
           }
+        }, error => {
+          Swal.fire({text:'Sorry , please try later.' , icon : 'error' , heightAuto : false});
         })
 
     })

@@ -13,9 +13,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { FaqComponent } from './pages/faq/faq.component';
 import { FooterComponent } from './footer/footer.component';
 import {AuthService} from "./services/auth.service";
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -29,7 +26,7 @@ import { ManageComponent } from './pages/storage/manage/manage.component';
 import { FileComponent } from './file/file.component';
 import { DialogDocumentRenameComponent } from './dialog-document-rename/dialog-document-rename.component';
 import { DialogDocumentRemoveComponent } from './dialog-document-remove/dialog-document-remove.component';
-import { IterceptorService } from './services/iterceptor.service';
+import { InterceptorService } from './services/interceptor.service';
 import {  BytePipe } from './pipes/byte.pipe';
 import { ManageUsersComponent } from './pages/manage-users/manage-users.component';
 
@@ -40,9 +37,6 @@ import { ManageUsersComponent } from './pages/manage-users/manage-users.componen
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    AboutComponent,
-    ContactComponent,
-    FaqComponent,
     FooterComponent,
     SignUpComponent,
     LogInComponent,
@@ -76,7 +70,7 @@ import { ManageUsersComponent } from './pages/manage-users/manage-users.componen
     }),
     SweetAlert2Module.forRoot()
   ],
-  providers: [AuthService , DocumentService , {provide : HTTP_INTERCEPTORS , useClass: IterceptorService , multi:true}],
+  providers: [AuthService , DocumentService , {provide : HTTP_INTERCEPTORS , useClass: InterceptorService , multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

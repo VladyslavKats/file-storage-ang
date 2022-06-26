@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TotalStatisticModel } from 'src/app/interfaces/total-statistic-model';
 import { UserStatisticModel } from 'src/app/interfaces/user-statistic-model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -22,6 +22,7 @@ export class OverviewComponent implements OnInit {
         .subscribe((response : TotalStatisticModel) => {
           this.files = response.totalFiles;
           this.percent = this.getPercent(response.totalUsedSpace , response.maxSpace);
+          
         });
     }else{
       this.statisticService.getUserStatistic()

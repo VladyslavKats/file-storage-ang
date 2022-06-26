@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div *ngIf="loaderService.isLoading$ | async" class="loader">
+  <div *ngIf="loading$ | async" class="loader">
     <mat-spinner style="top:40%;left:50%;z-index: 99;"></mat-spinner>
   </div>
   <app-header></app-header>

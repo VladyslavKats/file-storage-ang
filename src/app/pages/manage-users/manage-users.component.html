@@ -35,7 +35,7 @@
 
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td (click)="removeUser(row)" mat-cell *matCellDef="let row"> <mat-icon >delete</mat-icon></td>
+                <td  (click)="removeUser(row)" mat-cell *matCellDef="let row" > <mat-icon >delete</mat-icon></td>
               </ng-container>
           
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

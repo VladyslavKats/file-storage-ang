@@ -6,18 +6,18 @@ import { LoaderService } from './loader.service';
 @Injectable({
   providedIn: 'root'
 })
-export class IterceptorService implements HttpInterceptor {
+export class InterceptorService implements HttpInterceptor {
 
   constructor(private loaderService : LoaderService) { }
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    setTimeout(() => {this.loaderService.show()} , 0)
+    setTimeout(() => this.loaderService.show(), 0);
+    
     return next.handle(req)
       .pipe(
         finalize(() => {
-          this.loaderService.hide();
+          setTimeout(() => this.loaderService.hide() , 0);
         })
       )
     }
